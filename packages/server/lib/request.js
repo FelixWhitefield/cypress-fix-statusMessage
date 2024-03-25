@@ -495,7 +495,7 @@ module.exports = function (options = {}) {
 
       push(response)
 
-      response = _.pick(response, 'statusCode', 'body', 'headers')
+      response = _.pick(response, 'statusCode', 'body', 'headers', 'statusText')
 
       // normalize status
       response.status = response.statusCode
@@ -503,7 +503,6 @@ module.exports = function (options = {}) {
 
       _.extend(response, {
         // normalize what is an ok status code
-        statusText: statusCode.getText(response.status),
         isOkStatusCode: statusCode.isOk(response.status),
         requestHeaders: getOriginalHeaders(req),
         requestBody: req.body,
